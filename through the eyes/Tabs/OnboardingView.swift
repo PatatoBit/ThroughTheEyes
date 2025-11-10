@@ -37,22 +37,7 @@ struct OnboardingView: View {
         }
         .padding()
       }
-      .toolbar {
-        ToolbarItem(placement: .navigation) {
-          Button {
-            if currentSlideIndex > 0 {
-              withAnimation(.easeInOut(duration: 0.35)) {
-                currentSlideIndex -= 1
-              }
-            }
-          } label: {
-            Image(systemName: "chevron.left")
-              .opacity(currentSlideIndex > 0 ? 1 : 0)
-          }
-          .disabled(currentSlideIndex == 0)
-          .accessibilityHidden(currentSlideIndex == 0)
-        }
-      }
+      
     }
   }
 }
