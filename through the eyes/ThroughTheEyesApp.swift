@@ -1,5 +1,5 @@
 //
-//  through_the_eyesApp.swift
+//  ThroughTheEyesApp.swift
 //  through the eyes
 //
 //  Created by Patato on 10/11/25.
