@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
-
+    
     var body: some View {
         NavigationStack {
-            if !hasCompletedOnboarding {
-                OnboardingView()
-            } else {
-                VStack {
-                    Text("Hello world")
+            ZStack {
+                if !hasCompletedOnboarding {
+                    OnboardingView()
+                } else {
+                    HomeLayout()
+                        .transition(.opacity)
                 }
             }
+            .animation(.easeInOut, value: hasCompletedOnboarding)
         }
     }
 }

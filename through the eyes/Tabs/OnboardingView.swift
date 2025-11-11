@@ -32,7 +32,7 @@ struct OnboardingView: View {
         HStack {
           Spacer()
           Button("Continue") {
-                          if currentSlideIndex < slides.count - 1 {
+            if currentSlideIndex < slides.count - 1 {
               withAnimation(.easeInOut(duration: 0.35)) {
                 currentSlideIndex += 1
               }
