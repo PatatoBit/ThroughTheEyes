@@ -17,14 +17,17 @@ struct HomeLayout: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            VStack(alignment: .leading) {
                 LazyVGrid(columns: columns, spacing: 15) {
                     SimulatorBox(name: "Dyslexia")
                     SimulatorBox(name: "Color blindness")
                     SimulatorBox(name: "ADHD")
                 }
                 //            .border(.blue, width: 2)
+                
+                Spacer()
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding()
             .toolbar {
                 ToolbarItem (placement: .navigation) {
