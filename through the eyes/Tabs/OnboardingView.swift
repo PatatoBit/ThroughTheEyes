@@ -33,7 +33,9 @@ struct OnboardingView: View {
               }
             }
           }
-          Spacer()
+          .buttonStyle(PrimaryCall())
+
+            Spacer()
         }
         .padding()
       }
