@@ -10,22 +10,9 @@
 		6E597BFB2EC1D2C900DC8E97 /* through the eyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "through the eyes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		6EF321132EC2E7BD00F9DA87 /* Exceptions for "through the eyes" folder in "through the eyes" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"through-the-eyes-Info.plist",
-			);
-			target = 6E597BFA2EC1D2C900DC8E97 /* through the eyes */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		6E597BFD2EC1D2C900DC8E97 /* through the eyes */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				6EF321132EC2E7BD00F9DA87 /* Exceptions for "through the eyes" folder in "through the eyes" target */,
-			);
 			path = "through the eyes";
 			sourceTree = "<group>";
 		};

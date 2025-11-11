@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    let hasCompletedOnboarding = false
-    
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+
     var body: some View {
         NavigationStack {
             if !hasCompletedOnboarding {
                 OnboardingView()
-                    
             } else {
                 VStack {
                     Text("Hello world")
@@ -25,5 +24,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    UserDefaults.standard.set(false, forKey: "hasCompletedOnboarding")
+    return ContentView()
 }

@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct OnboardingView: View {
-
   @State private var currentSlideIndex = 0
+  @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+
   let slides: [AnyView] = [AnyView(Introduction()), AnyView(FavouriteColor()), AnyView(Ending())]
+
+  func completeOnboarding() {
+    hasCompletedOnboarding = true
+  }
 
   var body: some View {
     NavigationStack {
@@ -27,23 +32,26 @@ struct OnboardingView: View {
         HStack {
           Spacer()
           Button("Continue") {
-            if currentSlideIndex < slides.count - 1 {
+                          if currentSlideIndex < slides.count - 1 {
               withAnimation(.easeInOut(duration: 0.35)) {
                 currentSlideIndex += 1
               }
+            } else if currentSlideIndex == slides.count - 1 {
+              completeOnboarding()
             }
           }
           .buttonStyle(PrimaryCall())
 
-            Spacer()
+          Spacer()
         }
         .padding()
       }
-      
+
     }
   }
 }
 
 #Preview {
-  OnboardingView()
+  UserDefaults.standard.set(false, forKey: "hasCompletedOnboarding")
+  return OnboardingView()
 }
