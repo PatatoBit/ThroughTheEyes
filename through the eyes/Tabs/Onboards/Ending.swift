@@ -16,7 +16,7 @@ struct Ending: View {
                 Text("Now, explore all the simulations.").font(.largeTitle).fontDesign(.rounded)
             }
             
-            Text("At the end, you’ll get a special hand-drawn illustration from me! (Pat)")
+            Text("Complete them and you’ll get a special hand-drawn illustration from me! (Pat)")
             
             Spacer()
             
