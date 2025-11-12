@@ -40,7 +40,7 @@ struct OnboardingView: View {
               completeOnboarding()
             }
           }
-          .buttonStyle(PrimaryCall())
+          .buttonStyle(PrimaryCall(fullWidth: true))
 
           Spacer()
         }

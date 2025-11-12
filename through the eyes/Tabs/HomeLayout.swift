@@ -8,60 +8,23 @@
 import SwiftUI
 
 struct HomeLayout: View {
-    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
-    
-    let columns = [
-        GridItem(.flexible(), spacing: 20),
-        GridItem(.flexible(), spacing: 20)
-    ]
+    @State private var tabSelection = 0
     
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .leading) {
-                LazyVGrid(columns: columns, spacing: 15) {
-                    SimulatorBox(name: "Dyslexia")
-                    SimulatorBox(name: "Color blindness")
-                    SimulatorBox(name: "ADHD")
-                }
-                //            .border(.blue, width: 2)
-                
-                Spacer()
+        
+        TabView(selection: $tabSelection) {
+            Tab("Home", systemImage: "house.fill", value: 0) {
+                SimulatorGrid()
+  
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding()
-            .toolbar {
-                ToolbarItem (placement: .navigation) {
-                    Button {
-                        hasCompletedOnboarding = false
-                    } label: {
-                        Image(systemName: "memories")
-                            .foregroundColor(.gray)
-                    }
-                }
+            
+            Tab("About", systemImage: "info.circle.fill", value: 1) {
+                About()
             }
         }
     }
 }
 
-struct SimulatorBox: View {
-    var name: String = "Placeholder"
-    var imageName: String = "placeholder"
-    
-    var body: some View {
-        VStack {
-            Image(imageName)
-                .resizable()
-                .frame(maxWidth: .infinity)
-                .aspectRatio(1, contentMode: .fit)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-            //                    .border(Color.purple, width: 3)
-            Text("\(name)")
-        }
-        .frame(maxWidth: .infinity)
-        
-        //        .border(.red, width: 2)
-    }
-}
 
 #Preview {
     HomeLayout()

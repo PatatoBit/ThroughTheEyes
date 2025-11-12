@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct PrimaryCall: ButtonStyle {
+    var fullWidth: Bool = false
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: fullWidth ? .infinity : nil)
             .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
             .foregroundColor(.white)
             .background(Color.primaryBlue)
