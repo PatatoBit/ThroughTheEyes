@@ -16,6 +16,8 @@ struct About: View {
                 hasCompletedOnboarding = false
             }
             .buttonStyle(PrimaryCall())
+            .sensoryFeedback(.impact, trigger: hasCompletedOnboarding)
+            
         }.padding()
     }
 }

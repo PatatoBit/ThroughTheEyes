@@ -22,3 +22,24 @@ struct PrimaryCall: ButtonStyle {
             .bold()
     }
 }
+
+// Haptics
+
+struct HapticTapModifier: ViewModifier {
+    @State private var trigger = false
+    var feedback: SensoryFeedback
+
+    func body(content: Content) -> some View {
+        content
+            .onTapGesture {
+                trigger.toggle()
+            }
+            .sensoryFeedback(feedback, trigger: trigger)
+    }
+}
+
+extension View {
+    func hapticTap(_ feedback: SensoryFeedback = .impact(weight: .light)) -> some View {
+        modifier(HapticTapModifier(feedback: feedback))
+    }
+}

@@ -41,6 +41,7 @@ struct OnboardingView: View {
             }
           }
           .buttonStyle(PrimaryCall(fullWidth: true))
+          .sensoryFeedback(.impact, trigger: currentSlideIndex)
 
           Spacer()
         }

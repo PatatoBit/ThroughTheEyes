@@ -22,7 +22,9 @@ struct Dyslexia: View {
                     
                     DyslexiaSimulator()
                 }
-            }.padding()
+                .frame(maxHeight: .infinity)
+                .padding()
+            }
         }
     }
 }
@@ -31,12 +33,13 @@ struct Dyslexia: View {
 struct DyslexiaSimulator: View {
     @State private var intensity: Double = 0.5  // controls update frequency (0 to 1)
     @State private var displayedText: String = ""
+    @State private var sheetOpened = true
     
     let sampleText = """
     Dyslexia is a common learning disorder that primarily affects reading skills. Individuals with dyslexia often experience difficulty in recognizing speech sounds and connecting them to corresponding letters and words.
-
+    
     This disorder is neurological in origin and is not related to intelligence; many people with dyslexia have average or above-average intelligence but struggle with reading fluency and comprehension.
-
+    
     People with dyslexia tend to experience challenges such as letter movement illusions, word recognition difficulties, and slower reading pace. These symptoms arise because the brain processes written language differently, making it harder to decode words quickly and accurately.
     """
     
@@ -44,21 +47,16 @@ struct DyslexiaSimulator: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            ScrollView {
-                Text(displayedText)
-                    .font(.body)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .animation(.default, value: displayedText)
-            }
+            Text("Test yourself!")
+                .font(.title)
             
-            Spacer()
-            
-            VStack {
-                Text("Adjust Intensity")
-                Slider(value: $intensity, in: 0...1)
-            }
+            Text(displayedText)
+                .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
+                .animation(.default, value: displayedText)
         }
-        .padding()
+        .frame(maxHeight: .infinity)
+        .padding(EdgeInsets(top: 30, leading: 0, bottom: 300, trailing: 0))
         .onAppear {
             displayedText = sampleText
         }
@@ -67,6 +65,20 @@ struct DyslexiaSimulator: View {
             if Double.random(in: 0...1) < reshuffleChance {
                 displayedText = jumbleTextByParagraphs(sampleText)
             }
+        }
+        .sheet(isPresented: $sheetOpened) {
+            VStack {
+                VStack(alignment: .leading) {
+                    Text("Adjust Intensity")
+                    Slider(value: $intensity, in: 0...1)
+                    
+                    Spacer()
+                }
+                .padding(EdgeInsets(top: 40, leading: 25, bottom: 25, trailing: 25))
+            }
+            .presentationDetents([.fraction(0.3), .medium])
+            .presentationBackgroundInteraction(.enabled)
+            .interactiveDismissDisabled(true)
         }
     }
     
